@@ -1,39 +1,22 @@
 <template>
   <div>
     <message-list :messages="messages" />
+    <user-input />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import MessageList from '@/components/MessageList'
+import UserInput from '@/components/UserInput'
 
 export default {
-  data() {
-    return {
-      messages: [
-        {
-          id: 1,
-          type: 'text',
-          text: 'Hello world!',
-          me: false,
-          meta: {
-            timestamp: new Date()
-          }
-        },
-        {
-          id: 2,
-          type: 'text',
-          text: 'Hello, Valera!',
-          me: true,
-          meta: {
-            timestamp: new Date()
-          }
-        }
-      ]
-    }
+  computed: {
+    ...mapGetters(['messages'])
   },
   components: {
-    MessageList
+    MessageList,
+    UserInput
   }
 }
 </script>
