@@ -14,12 +14,15 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "ant-design-vue": "^1.1.10",
+    "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/moment": "^1.6.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "node-sass": "^4.14.1",
+    "nuxt-webfontloader": "^1.1.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2"
   }

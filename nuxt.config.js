@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['normalize.css/normalize.css', '@/assets/styles.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -31,7 +31,25 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [],
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/moment-module
+    '@nuxtjs/moment'
+  ],
+  /*
+   ** Moment
+   */
+  moment: {
+    defaultLocale: 'ru',
+    locales: ['ru']
+  },
+  /*
+   ** Google fonts
+   */
+  webfontloader: {
+    google: {
+      families: ['Open+Sans:300,400,600&display=swap']
+    }
+  },
   /*
    ** Nuxt.js modules
    */
@@ -39,7 +57,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://github.com/Developmint/nuxt-webfontloader
+    'nuxt-webfontloader'
   ],
   /*
    ** Axios module configuration
