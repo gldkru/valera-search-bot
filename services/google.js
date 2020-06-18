@@ -23,7 +23,7 @@ export default async ({ q, start = 1 }) => {
         // cx: process.env.GOOGLE_API_SEED,
         // key: process.env.GOOGLE_API_SEARCH_KEY,
         cx: '005908673950574329597:x3vyznmmoc4',
-        key: 'AIzaSyCLQ7UaeqF98kReGcRAyqjqCR_aCEZjb28',
+        key: 'AIzaSyCjotVQrBTkhgU2VWaLbAde89VOPiZO8iM',
         cr: 'countryRU',
         // lr: 'lang_ru',
         num: 1,
