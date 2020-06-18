@@ -1,7 +1,21 @@
-<template> </template>
+<template>
+  <div class="submit-button">
+    <slot></slot>
+  </div>
+</template>
 
-<script>
-export default {}
-</script>
+<style lang="scss">
+.submit-button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: $color-link;
 
-<style></style>
+  &:hover {
+    color: darken($color-link, 15%);
+    cursor: pointer;
+  }
+}
+</style>

@@ -4,29 +4,62 @@
       <span class="message__author">{{ author }}</span>
       <span class="message__time">{{ time }}</span>
     </header>
-    <text-message v-if="message.type === 'text'" :message-text="message.text" />
+
+    <loader-message key="loader" v-if="message.type === 'loading'" />
+    <text-message
+      key="text"
+      v-if="message.type === 'text'"
+      :message-text="message.text"
+    />
+    <lang-message
+      key="lang"
+      v-if="message.type === 'lang'"
+      :message-id="message.id"
+    />
+    <google-message
+      key="google"
+      v-if="message.type === 'google'"
+      :message-items="message.items"
+    />
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import TextMessage from '@/components/messages/TextMessage'
+import LangMessage from '@/components/messages/LangMessage'
+import GoogleMessage from '@/components/messages/GoogleMessage'
+import LoaderMessage from '@/components/messages/LoaderMessage'
 
 export default {
   props: {
     message: {
-      type: Object,
-      required: true
+      type: Object
     }
   },
   components: {
-    TextMessage
+    TextMessage,
+    LangMessage,
+    GoogleMessage,
+    LoaderMessage
+  },
+  updated() {
+    this.$emit('update')
   },
   computed: {
+    ...mapGetters(['loading']),
     author() {
-      return this.message.me ? 'Вы' : 'Валера'
+      return this.message.me ? this.$t('you') : this.$t('bot-name')
     },
     time() {
-      return this.$moment(this.message.meta.time).format('LT')
+      const date =
+        this.message.meta && this.message.meta.time
+          ? this.$moment(this.message.meta.time)
+          : new Date()
+      const today = new Date()
+      const format = date.isSame(today, 'day') ? 'LT' : 'LLL'
+
+      return this.$moment(this.message.meta.time).format(format)
     }
   }
 }
@@ -49,9 +82,13 @@ export default {
   }
 
   &__time {
-    font-size: 0.75rem;
-    color: #9babb4;
+    font-size: $font-size-second;
+    color: $color-second;
     margin-left: 0.5rem;
+  }
+
+  &__text {
+    white-space: pre-line;
   }
 }
 </style>

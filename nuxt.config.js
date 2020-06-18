@@ -1,3 +1,6 @@
+require('dotenv').config()
+const i18n = require('./locales')
+
 export default {
   mode: 'spa',
   /*
@@ -24,6 +27,9 @@ export default {
    ** Global CSS
    */
   css: ['normalize.css/normalize.css', '@/assets/styles.scss'],
+  styleResources: {
+    scss: ['@/assets/variables.scss']
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -59,7 +65,20 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     // Doc: https://github.com/Developmint/nuxt-webfontloader
-    'nuxt-webfontloader'
+    'nuxt-webfontloader',
+    // Dpc: https://github.com/rubystarashe/nuxt-vuex-localstorage
+    [
+      'nuxt-vuex-localstorage',
+      {
+        localStorage: ['store']
+      }
+    ],
+    // Doc: https://github.com/nuxt-community/style-resources-module
+    '@nuxtjs/style-resources',
+    // Doc: https://nuxt-community.github.io/nuxt-i18n/
+    ['nuxt-i18n', i18n],
+    // Doc: https://github.com/nuxt-community/svg-module
+    '@nuxtjs/svg'
   ],
   /*
    ** Axios module configuration
@@ -70,9 +89,22 @@ export default {
    ** Build configuration
    */
   build: {
+    postcss: {
+      plugins: {
+        autoprefixer: true
+      }
+    },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      // for README.md
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.md$/,
+        loader: 'raw-loader',
+        exclude: /(node_modules)/
+      })
+    }
   }
 }

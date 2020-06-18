@@ -1,0 +1,21 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: darken($color-link, 15%);
+    text-decoration: underline;
+  }
+}

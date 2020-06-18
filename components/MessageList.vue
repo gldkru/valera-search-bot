@@ -1,14 +1,18 @@
 <template>
-  <div ref="scrollList">
-    <message
-      v-for="{ id, ...message } in messages"
-      :message="message"
-      :key="id"
-    />
+  <div ref="scrollList" @scroll="handleScroll">
+    <transition-group name="list" tag="div">
+      <message
+        v-for="(message, index) in messages"
+        :message="message"
+        :key="message.meta.time + index"
+        @update="_scrollDown"
+      />
+    </transition-group>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Message from '@/components/Message'
 
 export default {
@@ -22,22 +26,37 @@ export default {
     }
   },
   mounted() {
+    this.init()
     this.$nextTick(this._scrollDown())
   },
   updated() {
-    if (this.shouldScrollToBottom()) this.$nextTick(this._scrollDown())
+    this.$nextTick(this._scrollDown())
   },
   methods: {
+    ...mapActions(['init']),
     _scrollDown() {
       this.$refs.scrollList.scrollTop = this.$refs.scrollList.scrollHeight
     },
-    shouldScrollToBottom() {
-      const scrollTop = this.$refs.scrollList.scrollTop
-      const scrollable = scrollTop > this.$refs.scrollList.scrollHeight - 600
-      return this.alwaysScrollToBottom || scrollable
+    handleScroll(e) {
+      if (e.target.scrollTop === 0) {
+        this.$emit('scrollToTop')
+      }
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>

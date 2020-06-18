@@ -15,15 +15,21 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "ant-design-vue": "^1.1.10",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.12.2",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "@nuxtjs/moment": "^1.6.1",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/svg": "^0.1.11",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "node-sass": "^4.14.1",
+    "nuxt-vuex-localstorage": "^1.2.6",
     "nuxt-webfontloader": "^1.1.0",
     "prettier": "^1.19.1",
+    "raw-loader": "^4.0.1",
     "sass-loader": "^8.0.2"
   }
 }
