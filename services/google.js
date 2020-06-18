@@ -22,7 +22,7 @@ export default async ({ q, start = 1 }) => {
         // All params: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
         // cx: process.env.GOOGLE_API_SEED,
         // key: process.env.GOOGLE_API_SEARCH_KEY,
-        cx: '005908673950574329597:la4qlpykhxi',
+        cx: '005908673950574329597:x3vyznmmoc4',
         key: 'AIzaSyCLQ7UaeqF98kReGcRAyqjqCR_aCEZjb28',
         cr: 'countryRU',
         // lr: 'lang_ru',
