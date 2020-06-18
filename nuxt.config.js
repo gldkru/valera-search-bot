@@ -39,8 +39,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/moment-module
-    '@nuxtjs/moment',
-    '@nuxtjs/netlify-files'
+    '@nuxtjs/moment'
   ],
   /*
    ** Moment
@@ -91,18 +90,6 @@ export default {
    */
   generate: {
     fallback: true
-  },
-
-  netlifyFiles: {
-    netlifyToml: {
-      build: {
-        environment: {
-          GOOGLE_API_SEARCH_KEY: 'AIzaSyCLQ7UaeqF98kReGcRAyqjqCR_aCEZjb28',
-          GOOGLE_API_SEED: '005908673950574329597:la4qlpykhxi',
-          API_COUNT_RESULTS: 1
-        }
-      }
-    }
   },
 
   build: {
