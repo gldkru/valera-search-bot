@@ -25,7 +25,7 @@
     "@nuxtjs/svg": "^0.1.11",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nuxt-vuex-localstorage": "^1.2.6",
     "nuxt-webfontloader": "^1.1.0",
     "prettier": "^1.19.1",
